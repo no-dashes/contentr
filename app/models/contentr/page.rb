@@ -125,7 +125,7 @@ module Contentr
     end
 
     # Public: Searches for all paragraphs with an exact area_name
-    # 
+    #
     # area_name - the area_name to search for
     #
     # Returns the matching paragraphs
@@ -207,7 +207,7 @@ module Contentr
       return true  if self.is_root? && self.accepted_parent_nodes.include?(:root)
       return false if self.is_root? && !self.accepted_parent_nodes.include?(:root)
       return self.accepted_parent_nodes.any?{ |node_class| node_class.kind_of?(Class) && parent.is_a?(node_class) }
-      
+
     end
 
   end
