@@ -1,16 +1,17 @@
 # coding: utf-8
-
+require "carrierwave"
 module Contentr
-  class File
-    include Mongoid::Document
-
+  class File < ActiveRecord::Base
     # Fields
-    field :description, :type => String
-    field :slug,        :type => String, unique: true
-    field :file,        :type => String
-    
+    attr_accessible :description, :slug, :file
+
+    validates_uniqueness_of :slug
+
     mount_uploader :file, Contentr::FileUploader
     
+    # Public: Generates the actual file path
+    # 
+    # Return the generated path
     def actual_file()
       ::File.join(Rails.root, 'public', file_url())
     end
