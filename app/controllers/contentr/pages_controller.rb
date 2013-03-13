@@ -1,6 +1,8 @@
 class Contentr::PagesController < Contentr::ApplicationController
 
   # The default action to render a view
-  def show; end
+  def show
+    contentr_page
+  end
 
 end

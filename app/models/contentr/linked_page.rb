@@ -12,6 +12,15 @@ module Contentr
     validates_uniqueness_of :linked_to
 
 
+    def self.find_by_keys(*keys)
+      keys.flatten.each do |key|
+        next unless key.present?
+        page = LinkedPage.where(linked_to: key).try(:first)
+        return page if page
+      end
+      nil
+    end
+
     # Public: find a LinkedPage by specific parameters
     #
     # params - A hash containing the following keys:
@@ -32,20 +41,11 @@ module Contentr
       default_pattern = "#{controller}##{action}"
       full_pattern = "#{default_pattern}:#{id}" if id.present?
 
-      if full_pattern.present?
-        page = LinkedPage.where(linked_to: full_pattern).try(:first)
-        return page if page.present?
-      end
-
-      page = LinkedPage.where(linked_to: default_pattern).try(:first)
-      return page if page.present?
-
-      page = LinkedPage.where(linked_to: wildcard_pattern).try(:first)
-      return page if page.present?
+      find_by_keys full_pattern, default_pattern, wildcard_pattern
     end
 
     # Public: generate a url by the string given in the linked_to attribute
-    # 
+    #
     # Returns the url of the linkedPage or the rootUrl if non could be found
     def url
       begin
