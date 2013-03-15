@@ -30,8 +30,7 @@ function closeIFrame(){
   <% end %>
 
   <% paragraphs.each do |p| %>
-    <% template_name = p.class.to_s.tableize.singularize %>
-    <div id="<%= "paragraph_#{p.id}" %>" class="paragraph">
+    <div id="paragraph_<%= p.id %>" class="paragraph">
       <% if authorized %>
         <div class="toolbar">
           <div class="handle">&#9776;</div>
@@ -43,8 +42,8 @@ function closeIFrame(){
           </div>
         </div>
       <% end %>
-      <div>
-        <%= render(template: "contentr/paragraphs/#{template_name}", locals: {paragraph: p}) %>
+      <div class='contentr_paragraph_body'>
+        <%= render(template: p.template_path, locals: {paragraph: p}) %>
       </div>
     </div>
   <% end %>

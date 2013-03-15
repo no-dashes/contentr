@@ -40,7 +40,7 @@ jQuery(function($) {
       url: "/contentr/admin/pages/"+ clicked.data('page') +"/paragraphs/"+
            clicked.data('paragraph')+"/show_version/"+ clicked.data('current'),
       success: function(msg){
-        $('#paragraph_'+ clicked.data('paragraph')+' div:last').html(msg);
+        $('#paragraph_'+ clicked.data('paragraph')).find('div.contentr_paragraph_body').html(msg);
         if(clicked.data("current") == "0"){
           clicked.text("Show unpublished version");
           clicked.data("current", "1");

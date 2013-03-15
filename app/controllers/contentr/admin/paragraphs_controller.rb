@@ -38,7 +38,7 @@ class Contentr::Admin::ParagraphsController < Contentr::Admin::ApplicationContro
     if params[:paragraph].has_key?("remove_image")
       @paragraph.image_asset_wrapper_for(params[:paragraph]["remove_image"]).remove_file!(@paragraph)
       params[:paragraph].delete("remove_image")
-    end 
+    end
     if @paragraph.update_attributes(params[:paragraph])
       flash[:notice] = 'Paragraph saved'
       redirect_to contentr_admin_pages_path(root: @page.id)
@@ -58,13 +58,14 @@ class Contentr::Admin::ParagraphsController < Contentr::Admin::ApplicationContro
     @paragraph = @page_or_site.paragraphs.find(params[:id])
     @paragraph.revert!
     flash[:notice] = "Reverted this paragraph"
-    redirect_to contentr_admin_pages_path(root: @page.id)
+    redirect_to :back
   end
 
   def show_version
     @paragraph = @page_or_site.paragraphs.find(params[:id])
-    current = params[:current] == "1" ? true : false
-    render text: view_context.display_paragraph(@paragraph, current)
+    @paragraph.for_edit if params[:current] == "1"
+    render(template: @paragraph.template_path, locals: {paragraph: @paragraph}, layout: false)
+    # render text: view_context.display_paragraph(@paragraph, current)
   end
 
   def destroy

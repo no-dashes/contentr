@@ -83,6 +83,14 @@ module Contentr
       self
     end
 
+    def template_name
+      self.class.to_s.tableize.singularize
+    end
+
+    def template_path
+      "contentr/paragraphs/#{template_name}"
+    end
+
     # Scopes
     default_scope order("position asc")
 

@@ -5,6 +5,7 @@ module Contentr
     module ParagraphsHelper
 
       def display_paragraph(p, current = true)
+        raise "Don't use me any more!"
         case p
         when Contentr::HtmlParagraph
           p = p.for_edit if contentr_publisher? && current
