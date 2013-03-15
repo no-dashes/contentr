@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.name = 'contentr'
   s.version = '1.0.0'
   s.summary = %q{CMS engine for Rails}
-  s.description = %q{Contentr is a Content Management System (CMS) that plugs into any Rails 3.1 application as an engine.}
+  s.description = %q{Contentr is a Content Management System (CMS) that plugs into any Rails 3.2 application as an engine.}
   s.authors = ["Rene Sprotte", "Dr. Peter Horn", "Florian Thomas"]
   s.email = ['team@metaminded.com']
   s.homepage = 'http://github.com/metaminded/contentr'
