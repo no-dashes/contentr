@@ -73,7 +73,8 @@ module Contentr
     end
 
     def unpublished_changes?
-      data != unpublished_data && unpublished_data.present?
+      p = self.class.find(self.id)
+      p.data != p.unpublished_data && p.unpublished_data.present?
     end
 
     def for_edit
@@ -170,7 +171,7 @@ module Contentr
       self.send(:define_method, "#{name}_changed?") do
         true # self.data_was && data_was[name] != data[name]
       end
-      
+
       # make a nice subclass to hold the actual asset
       asset_class_name = "ImageAsset#{self}#{name.capitalize}".gsub("::","")
       Object.const_set asset_class_name, Class.new(Contentr::ImageAsset)
@@ -210,7 +211,7 @@ module Contentr
       else
         klaz.try :new
       end
-    end    
+    end
   end
 end
 
