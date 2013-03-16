@@ -63,9 +63,8 @@ class Contentr::Admin::ParagraphsController < Contentr::Admin::ApplicationContro
 
   def show_version
     @paragraph = @page_or_site.paragraphs.find(params[:id])
-    @paragraph.for_edit if params[:current] == "1"
+    @paragraph.for_edit if params[:version] == "unpublished"
     render(template: @paragraph.template_path, locals: {paragraph: @paragraph}, layout: false)
-    # render text: view_context.display_paragraph(@paragraph, current)
   end
 
   def destroy

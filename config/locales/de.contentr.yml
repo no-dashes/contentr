@@ -1,0 +1,13 @@
+# encoding: utf-8
+
+de:
+  contentr:
+    paragraph:
+      new: Neu
+      edit: Bearbeiten
+      delete: Löschen
+      publish: Publizieren
+      revert: Wiederherstellen
+      show_published_version: Aktuelle Version
+      show_unpublished_version: Neue Version
+

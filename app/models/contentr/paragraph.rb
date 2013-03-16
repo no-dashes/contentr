@@ -27,9 +27,13 @@ module Contentr
     end
 
     def after_save_copy_unpublished()
+      Rails.logger.info ">>> 1 #{@_data_was}"
       self.update_column(:unpublished_data, self.data.to_yaml)
+      Rails.logger.info ">>> 2 #{@_data_was}"
       self.update_column(:data, @_data_was) if !@_publish_now
+      Rails.logger.info ">>> 3 #{@_data_was}"
       reload
+      Rails.logger.info ">>> 4 #{@_data_was}"
       @_publish_now = false
     end
 

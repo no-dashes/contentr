@@ -18,7 +18,7 @@ Rails.application.routes.draw do
       get    'pages/:page_id/paragraphs/:id/edit'  => 'paragraphs#edit',    :as => 'edit_paragraph'
       get    'pages/:page_id/paragraphs/:id/publish' => 'paragraphs#publish', :as => 'publish_paragraph'
       get    'pages/:page_id/paragraphs/:id/revert' => 'paragraphs#revert', :as => 'revert_paragraph'
-      get    'pages/:page_id/paragraphs/:id/show_version/:current' => 'paragraphs#show_version', as: 'show_version'
+      get    'pages/:page_id/paragraphs/:id/show_version/:version' => 'paragraphs#show_version', as: 'show_version'
       put    'pages/:page_id/paragraphs/:id'       => 'paragraphs#update',  :as => 'paragraph'
       delete 'pages/:page_id/paragraphs/:id'       => 'paragraphs#destroy', :as => 'paragraph'
     end

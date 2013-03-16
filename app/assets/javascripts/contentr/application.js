@@ -33,31 +33,44 @@ jQuery(function($) {
     }
   });
 
-  $(".show_published_version").click(function(){
+  $("a[data-contentr-show-published-version]").click(function(){
     var clicked = $(this);
+    var id = clicked.data("contentr-show-published-version");
     $.ajax({
       type: "GET",
-      url: "/contentr/admin/pages/"+ clicked.data('page') +"/paragraphs/"+
-           clicked.data('paragraph')+"/show_version/"+ clicked.data('current'),
+      url: clicked.attr('href'),
       success: function(msg){
-        $('#paragraph_'+ clicked.data('paragraph')).find('div.contentr_paragraph_body').html(msg);
-        if(clicked.data("current") == "0"){
-          clicked.text("Show unpublished version");
-          clicked.data("current", "1");
-          $("#publish-btn-"+ clicked.data('paragraph')).hide();
-          $("#revert-btn-"+ clicked.data('paragraph')).show();
-        }else{
-          clicked.text("Show published version");
-          $("#publish-btn-"+ clicked.data('paragraph')).show();
-          $("#revert-btn-"+ clicked.data('paragraph')).hide();
-          clicked.data("current", "0");
-        }
-
+        $('#paragraph_' + id).find('div.contentr_paragraph_body').html(msg);
+        clicked.hide();
+        $('a[data-contentr-publish-version='+id+']').hide();
+        $('a[data-contentr-show-unpublished-version='+id+']').show();
+        $('a[data-contentr-revert-unpublished-version='+id+']').show();
       },
       error: function(msg){
         console.log("Error: "+ msg);
       }
     });
+    return false;
+  });
+
+  $("a[data-contentr-show-unpublished-version]").click(function(){
+    var clicked = $(this);
+    var id = clicked.data("contentr-show-unpublished-version");
+    $.ajax({
+      type: "GET",
+      url: clicked.attr('href'),
+      success: function(msg){
+        $('#paragraph_' + id).find('div.contentr_paragraph_body').html(msg);
+        clicked.hide();
+        $('a[data-contentr-revert-unpublished-version='+id+']').hide();
+        $('a[data-contentr-show-published-version='+id+']').show();
+        $('a[data-contentr-publish-version='+id+']').show();
+      },
+      error: function(msg){
+        console.log("Error: "+ msg);
+      }
+    });
+    return false;
   });
 
 });
