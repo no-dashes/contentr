@@ -10,4 +10,13 @@ de:
       revert: Wiederherstellen
       show_published_version: Aktuelle Version
       show_unpublished_version: Neue Version
+      preview_old_version: Vorige Version
+    admin:
+      paragraphs:
+        edit: Paragraphen Bearbeiten
 
+  activerecord:
+    models:
+      page: Seite
+      paragraph: Paragraphen
+    attributes:
