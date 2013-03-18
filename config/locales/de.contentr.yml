@@ -14,6 +14,7 @@ de:
     admin:
       paragraphs:
         edit: Paragraphen Bearbeiten
+        new: Paragraphen Anlegen
 
   activerecord:
     models:

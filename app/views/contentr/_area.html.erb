@@ -40,8 +40,8 @@ function closeIFrame(){
             <% elsif contentr_publisher? %>
               <%= link_to t('contentr.paragraph.publish'), contentr_admin_publish_paragraph_path(:page_id => page.id, :id => p.id), 'data-contentr-publish-version' => p.id %>
               <%= link_to t('contentr.paragraph.revert'), contentr_admin_revert_paragraph_path(:page_id => page.id, :id => p.id), 'data-contentr-revert-unpublished-version' => p.id, style: "display: none" %>
-              <%= link_to t('contentr.paragraph.show_unpublished'), contentr_admin_show_version_path(page, p, :unpublished), 'data-contentr-show-unpublished-version' => p.id, style: 'display:none' %>
-              <%= link_to t('contentr.paragraph.show_published'), contentr_admin_show_version_path(page, p, :published), 'data-contentr-show-published-version' => p.id %>
+              <%= link_to t('contentr.paragraph.show_unpublished_version'), contentr_admin_show_version_path(page, p, :unpublished), 'data-contentr-show-unpublished-version' => p.id, style: 'display:none' %>
+              <%= link_to t('contentr.paragraph.show_published_version'), contentr_admin_show_version_path(page, p, :published), 'data-contentr-show-published-version' => p.id %>
             <% end %>
             <%= link_to(t('contentr.paragraph.edit'), contentr_admin_edit_paragraph_path(:page_id => page, :id => p, :site => page.is_a?(Contentr::Site)), :rel => 'contentr-overlay') %>
             <%= link_to(t('contentr.paragraph.delete'), contentr_admin_paragraph_path(:page_id => page, :id => p, :site => page.is_a?(Contentr::Site)), :method => :delete, :confirm => 'Really delete?') %>
