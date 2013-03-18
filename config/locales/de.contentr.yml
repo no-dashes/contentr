@@ -13,11 +13,12 @@ de:
       preview_old_version: Vorige Version
     admin:
       paragraphs:
-        edit: Paragraphen Bearbeiten
-        new: Paragraphen Anlegen
+        edit: Inhaltselement bearbeiten
+        new: Inhaltselement anlegen
+        select: Wählen Sie Ihr Inhaltselement
 
   activerecord:
     models:
-      page: Seite
-      paragraph: Paragraphen
+      contentr/page: Seite
+      contentr/paragraph: Inhaltselement
     attributes:
